@@ -1,0 +1,255 @@
+/*four button and one info page*/
+
+
+body {
+  font-family: YaHei;
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.photo-div {
+  align: center;
+  padding: 200px;
+}
+
+.figure {
+    text-align:center;
+    border:1px solid #ccc;
+    background-color:white;
+    /* margin:5px; */
+    float:left;
+}
+
+.caption {
+    padding:0;
+    border-bottom: 2px solid white;
+    margin:0 0 0 0;
+    font:italic 14px Georgia, "Times New Roman", Times, serif;
+    color:black;
+}
+
+#back {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+    padding: 6px 12px;
+    z-index:1;
+    margin-top:30px;
+    margin-left:15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: fixed;
+}
+
+#back:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+#about {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA; /* Blue */
+    padding: 6px 12px;
+    z-index:1;
+    margin-top:30px;
+    margin-left:85px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: fixed;
+}
+
+#about:hover {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+#music_bt {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 6px 12px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+
+#fullscreen {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 6px 10px;
+    margin-bottom: 40px;
+}
+
+
+#start-bt {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555; /* Black */
+    z-index:1;
+    width:200px;
+    position:relative;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+#start-bt:hover {
+    background-color: #555555; /* Black */
+    color: white;
+}
+
+#donate-bt {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336; /* Red */
+    z-index:1;
+    width:200px;
+    position:relative;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+#donate-bt:hover {
+    background-color: #f44336;  /* Red */
+    color: white;
+}
+
+#info {
+    padding: 6px 12px;
+    z-index:1;
+    margin-top:30px;
+    margin-left:200px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    position: fixed;
+}
+
+#status {
+  -webkit-transition: opacity 0.4s;
+     -moz-transition: opacity 0.4s;
+      -ms-transition: opacity 0.4s;
+          transition: opacity 0.4s;
+}
+
+#status {
+  opacity: 0;
+  position: fixed;
+  text-align: center;
+  background: #222;
+  color: white;
+  background: hsla( 0, 0%, 0%, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 2; /* over other stuff */
+}
+
+#status progress { font-size: 28px; }
+
+#loader {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 60%;
+  z-index: 1003;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+#mask-bg {
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.7;
+    opacity:.70;
+    filter: alpha(opacity=70);
+}
+
+#mask-show {
+    display: block;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    height: 65%;
+    padding: 8px;
+    border: 8px solid #E8E9F7;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
+
+#tips {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+

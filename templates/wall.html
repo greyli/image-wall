@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+<div class="step" id="overview" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="10000" data-scale="1" data-transition-duration="2000">
+</div>
+{% for photo in images %}
+
+<div class="step" data-x="{{ photo[1] }}" data-y="{{ photo[2] }}" data-z="{{ photo[3] }}">
+  <div align="center">
+      <img class="image" src="{{ url_for('static', filename='photos/') }}{{ photo[0] }}">
+  </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}
