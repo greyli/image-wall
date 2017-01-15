@@ -1,16 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Image Wall Generator</title>
-</head>
-<body>
+{% block head %}
+<style>
+    
+.overview-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+    padding: 6px 12px;
+    z-index:1;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 
-<h1>Image Wall Generator</h1>
-<form id="form_upload" method="POST" enctype="multipart/form-data">
-  <input type="file" name="photo" id="photo" multiple="multiple">
-  <input id="submit_button" type="submit" value="Submit">
-</form>
+.overview-btn:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
 
-</body>
-</html>
+.about-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA; /* Blue */
+    padding: 6px 12px;
+    z-index:1;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.about-btn:hover {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+</style>
+{% endblock %}
+<div class="center-text">
+    <div class="container" style="margin: 20% 30%; padding: 20px;border: 1px solid black">
+        <h1>图片墙生成器</h1>
+    <form id="form_upload" method="POST" enctype="multipart/form-data">
+      <input class="button about-btn" type="file" name="photo" id="photo" multiple="multiple">
+      <input class="button overview-btn" type="submit" value="OK！">
+        <p>进度条
+    </form>
+        
+    </div>
+
+</div>

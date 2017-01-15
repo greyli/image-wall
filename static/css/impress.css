@@ -1,0 +1,602 @@
+/*
+    We start with a good ol' reset.
+    That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
+
+    You can probably argue if it is needed here, or not, but for sure it
+    doesn't do any harm and gives us a fresh start.
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+
+/*
+    Now here is when interesting things start to appear.
+
+    We set up <body> styles with default font and nice gradient in the background.
+    And yes, there is a lot of repetition there because of -prefixes but we don't
+    want to leave anybody behind.
+*/
+body {
+    font-family: 'PT Sans', sans-serif;
+    min-height: 740px;
+    background-color: #fff;
+}
+
+/*
+    Now let's bring some text styles back ...
+*/
+b, strong { font-weight: bold }
+i, em { font-style: italic }
+
+/*
+    Because the main point behind the impress.js demo is to demo impress.js
+    we display a fallback message for users with browsers that don't support
+    all the features required by it.
+
+    All of the content will be still fully accessible for them, but I want
+    them to know that they are missing something - that's what the demo is
+    about, isn't it?
+
+    And then we hide the message, when support is detected in the browser.
+*/
+
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+.fallback-message p {
+    margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+.step {
+    position: relative;
+    width: 900px;
+    padding: 40px;
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+
+    font-family: 'PT Serif', georgia, serif;
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+/*
+    ... and we enhance the styles for impress.js.
+
+    Basically we remove the margin and make inactive steps a little bit transparent.
+*/
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.3;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1 }
+
+#overview { display: none }
+
+.impress-on-overview .step {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.impress-enabled          { pointer-events: auto }
+.impress-enabled #impress { pointer-events: auto }
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * *\
+  CSShake :: Package
+  v1.5.0
+  CSS classes to move your DOM
+  (c) 2015 @elrumordelaluz
+  http://elrumordelaluz.github.io/csshake/
+  Licensed under MIT
+\* * * * * * * * * * * * * * * * * * * * */
+.shake, .shake-little, .shake-slow, .shake-hard, .shake-horizontal, .shake-vertical, .shake-rotate, .shake-opacity, .shake-crazy, .shake-chunk {
+  display: inline-block;
+  transform-origin: center center; }
+
+.shake-freeze,
+.shake-constant.shake-constant--hover:hover,
+.shake-trigger:hover .shake-constant.shake-constant--hover {
+  animation-play-state: paused; }
+
+.shake-freeze:hover,
+.shake-trigger:hover .shake-freeze, .shake:hover, .shake-trigger:hover .shake, .shake-little:hover, .shake-trigger:hover .shake-little, .shake-slow:hover, .shake-trigger:hover .shake-slow, .shake-hard:hover, .shake-trigger:hover .shake-hard, .shake-horizontal:hover, .shake-trigger:hover .shake-horizontal, .shake-vertical:hover, .shake-trigger:hover .shake-vertical, .shake-rotate:hover, .shake-trigger:hover .shake-rotate, .shake-opacity:hover, .shake-trigger:hover .shake-opacity, .shake-crazy:hover, .shake-trigger:hover .shake-crazy, .shake-chunk:hover, .shake-trigger:hover .shake-chunk {
+  animation-play-state: running; }
+
+@keyframes shake {
+  2% {
+    transform: translate(-0.5px, 0.5px) rotate(0.5deg); }
+  4% {
+    transform: translate(-0.5px, -0.5px) rotate(0.5deg); }
+  6% {
+    transform: translate(2.5px, 2.5px) rotate(-0.5deg); }
+  8% {
+    transform: translate(2.5px, 2.5px) rotate(-0.5deg); }
+  10% {
+    transform: translate(2.5px, -1.5px) rotate(1.5deg); }
+  12% {
+    transform: translate(-1.5px, 2.5px) rotate(-0.5deg); }
+  14% {
+    transform: translate(0.5px, 2.5px) rotate(1.5deg); }
+  16% {
+    transform: translate(-1.5px, -1.5px) rotate(0.5deg); }
+  18% {
+    transform: translate(0.5px, -1.5px) rotate(0.5deg); }
+  20% {
+    transform: translate(2.5px, -1.5px) rotate(0.5deg); }
+  22% {
+    transform: translate(0.5px, 0.5px) rotate(-0.5deg); }
+  24% {
+    transform: translate(1.5px, 1.5px) rotate(-0.5deg); }
+  26% {
+    transform: translate(1.5px, -0.5px) rotate(0.5deg); }
+  28% {
+    transform: translate(2.5px, -0.5px) rotate(0.5deg); }
+  30% {
+    transform: translate(1.5px, 2.5px) rotate(-0.5deg); }
+  32% {
+    transform: translate(1.5px, 1.5px) rotate(1.5deg); }
+  34% {
+    transform: translate(-1.5px, 0.5px) rotate(-0.5deg); }
+  36% {
+    transform: translate(2.5px, 2.5px) rotate(-0.5deg); }
+  38% {
+    transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
+  40% {
+    transform: translate(1.5px, -0.5px) rotate(1.5deg); }
+  42% {
+    transform: translate(0.5px, -1.5px) rotate(1.5deg); }
+  44% {
+    transform: translate(-1.5px, -1.5px) rotate(1.5deg); }
+  46% {
+    transform: translate(2.5px, 2.5px) rotate(1.5deg); }
+  48% {
+    transform: translate(0.5px, 0.5px) rotate(0.5deg); }
+  50% {
+    transform: translate(1.5px, -1.5px) rotate(-0.5deg); }
+  52% {
+    transform: translate(-1.5px, 2.5px) rotate(-0.5deg); }
+  54% {
+    transform: translate(-1.5px, -0.5px) rotate(-0.5deg); }
+  56% {
+    transform: translate(1.5px, 0.5px) rotate(0.5deg); }
+  58% {
+    transform: translate(0.5px, -0.5px) rotate(0.5deg); }
+  60% {
+    transform: translate(0.5px, 1.5px) rotate(0.5deg); }
+  62% {
+    transform: translate(2.5px, -0.5px) rotate(0.5deg); }
+  64% {
+    transform: translate(1.5px, -0.5px) rotate(0.5deg); }
+  66% {
+    transform: translate(0.5px, -1.5px) rotate(-0.5deg); }
+  68% {
+    transform: translate(-0.5px, 0.5px) rotate(1.5deg); }
+  70% {
+    transform: translate(0.5px, 1.5px) rotate(0.5deg); }
+  72% {
+    transform: translate(2.5px, -0.5px) rotate(-0.5deg); }
+  74% {
+    transform: translate(0.5px, 1.5px) rotate(-0.5deg); }
+  76% {
+    transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
+  78% {
+    transform: translate(0.5px, 0.5px) rotate(-0.5deg); }
+  80% {
+    transform: translate(2.5px, -1.5px) rotate(0.5deg); }
+  82% {
+    transform: translate(0.5px, 1.5px) rotate(0.5deg); }
+  84% {
+    transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
+  86% {
+    transform: translate(0.5px, 2.5px) rotate(1.5deg); }
+  88% {
+    transform: translate(0.5px, 2.5px) rotate(-0.5deg); }
+  90% {
+    transform: translate(2.5px, 1.5px) rotate(1.5deg); }
+  92% {
+    transform: translate(-1.5px, -1.5px) rotate(0.5deg); }
+  94% {
+    transform: translate(-0.5px, -1.5px) rotate(-0.5deg); }
+  96% {
+    transform: translate(-0.5px, -1.5px) rotate(0.5deg); }
+  98% {
+    transform: translate(-0.5px, 1.5px) rotate(0.5deg); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
+.shake:hover, .shake-trigger:hover .shake, .shake.shake-freeze, .shake.shake-constant {
+  animation-duration: 100ms;
+  animation-iteration-count: infinite;
+  animation-name: shake;
+  animation-timing-function: ease-in-out; }
+
+@keyframes shake-hard {
+  2% {
+    transform: translate(-1px, -5px) rotate(-2.5deg); }
+  4% {
+    transform: translate(-5px, -8px) rotate(2.5deg); }
+  6% {
+    transform: translate(4px, 2px) rotate(-0.5deg); }
+  8% {
+    transform: translate(1px, 6px) rotate(-1.5deg); }
+  10% {
+    transform: translate(-3px, -6px) rotate(3.5deg); }
+  12% {
+    transform: translate(10px, 5px) rotate(-2.5deg); }
+  14% {
+    transform: translate(-5px, 8px) rotate(-0.5deg); }
+  16% {
+    transform: translate(7px, 6px) rotate(-2.5deg); }
+  18% {
+    transform: translate(4px, -7px) rotate(1.5deg); }
+  20% {
+    transform: translate(-2px, 2px) rotate(0.5deg); }
+  22% {
+    transform: translate(-1px, 9px) rotate(-0.5deg); }
+  24% {
+    transform: translate(1px, -2px) rotate(0.5deg); }
+  26% {
+    transform: translate(-7px, -9px) rotate(1.5deg); }
+  28% {
+    transform: translate(-5px, -2px) rotate(-2.5deg); }
+  30% {
+    transform: translate(-4px, 7px) rotate(3.5deg); }
+  32% {
+    transform: translate(8px, 2px) rotate(2.5deg); }
+  34% {
+    transform: translate(5px, -5px) rotate(0.5deg); }
+  36% {
+    transform: translate(-8px, -8px) rotate(2.5deg); }
+  38% {
+    transform: translate(-7px, -2px) rotate(2.5deg); }
+  40% {
+    transform: translate(8px, 0px) rotate(-1.5deg); }
+  42% {
+    transform: translate(0px, -2px) rotate(2.5deg); }
+  44% {
+    transform: translate(-1px, 1px) rotate(3.5deg); }
+  46% {
+    transform: translate(10px, -5px) rotate(2.5deg); }
+  48% {
+    transform: translate(-1px, 7px) rotate(0.5deg); }
+  50% {
+    transform: translate(-8px, -2px) rotate(1.5deg); }
+  52% {
+    transform: translate(-9px, 8px) rotate(2.5deg); }
+  54% {
+    transform: translate(2px, 9px) rotate(-2.5deg); }
+  56% {
+    transform: translate(-2px, 0px) rotate(2.5deg); }
+  58% {
+    transform: translate(1px, 1px) rotate(-2.5deg); }
+  60% {
+    transform: translate(10px, -9px) rotate(-0.5deg); }
+  62% {
+    transform: translate(5px, 4px) rotate(0.5deg); }
+  64% {
+    transform: translate(2px, -4px) rotate(0.5deg); }
+  66% {
+    transform: translate(-9px, -7px) rotate(2.5deg); }
+  68% {
+    transform: translate(-5px, -1px) rotate(0.5deg); }
+  70% {
+    transform: translate(9px, -1px) rotate(2.5deg); }
+  72% {
+    transform: translate(8px, 8px) rotate(-1.5deg); }
+  74% {
+    transform: translate(-1px, 4px) rotate(2.5deg); }
+  76% {
+    transform: translate(3px, -7px) rotate(1.5deg); }
+  78% {
+    transform: translate(-7px, 0px) rotate(-2.5deg); }
+  80% {
+    transform: translate(-5px, 5px) rotate(2.5deg); }
+  82% {
+    transform: translate(6px, 6px) rotate(-0.5deg); }
+  84% {
+    transform: translate(10px, 8px) rotate(-0.5deg); }
+  86% {
+    transform: translate(4px, 10px) rotate(-0.5deg); }
+  88% {
+    transform: translate(-5px, -9px) rotate(-1.5deg); }
+  90% {
+    transform: translate(-8px, 9px) rotate(1.5deg); }
+  92% {
+    transform: translate(6px, 6px) rotate(-1.5deg); }
+  94% {
+    transform: translate(-3px, -4px) rotate(-1.5deg); }
+  96% {
+    transform: translate(6px, -5px) rotate(0.5deg); }
+  98% {
+    transform: translate(10px, 4px) rotate(-0.5deg); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
+.shake-hard:hover, .shake-trigger:hover .shake-hard, .shake-hard.shake-freeze, .shake-hard.shake-constant {
+  animation-duration: 100ms;
+  animation-iteration-count: infinite;
+  animation-name: shake-hard;
+  animation-timing-function: ease-in-out; }
+
+
+
+
+
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.small-text {
+    font-size: 22px;
+}
+
+.big-text {
+    font-size: 36px;
+}
+
+.overview-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+    padding: 6px 12px;
+    z-index:1;
+    margin-top:30px;
+    margin-left:15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: fixed;
+}
+
+.overview-btn:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.about-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA; /* Blue */
+    padding: 6px 12px;
+    z-index:1;
+    margin-top:30px;
+    margin-left:85px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: fixed;
+}
+
+.about-btn:hover {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+#fullscreen {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 6px 10px;
+    margin-bottom: 40px;
+}
+
+.back-bt {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555; /* Black */
+    z-index:1;
+    width:200px;
+    position:relative;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.back-bt:hover {
+    background-color: #555555; /* Black */
+    color: white;
+}
+
+.donate-bt {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336; /* Red */
+    z-index:1;
+    width:200px;
+    position:relative;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.donate-bt:hover {
+    background-color: #f44336;  /* Red */
+    color: white;
+}
+
+#info {
+    padding: 6px 12px;
+    z-index:1;
+    margin-top:30px;
+    margin-left:200px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    position: fixed;
+}
+
+#status {
+  -webkit-transition: opacity 0.4s;
+     -moz-transition: opacity 0.4s;
+      -ms-transition: opacity 0.4s;
+          transition: opacity 0.4s;
+}
+
+#status {
+  opacity: 0;
+  position: fixed;
+  text-align: center;
+  background: #222;
+  color: white;
+  background: hsla( 0, 0%, 0%, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 2; /* over other stuff */
+}
+
+#status progress { font-size: 28px; }
+
+#loader {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 60%;
+  z-index: 1003;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+#mask-bg {
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.7;
+    opacity:.70;
+    filter: alpha(opacity=70);
+}
+
+#mask-show {
+    display: block;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    height: 65%;
+    padding: 8px;
+    border: 8px solid #E8E9F7;
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+}
+
+#tips {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}

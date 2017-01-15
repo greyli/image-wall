@@ -18,9 +18,7 @@ function hidediv() {
     document.getElementById("mask-show").style.display ='none';
     document.getElementById("tips").style.display ='none';
     document.getElementById("loader").style.display ='none';
-
 }
-
 
 //imageloaded
 $('#image-container').imagesLoaded()
@@ -57,19 +55,3 @@ function toggleFullScreen() {
     }  
   }  
 }
-
-// Control the background music
-function playPause() {
-    var music = document.getElementById('bg_music');
-    var music_btn = document.getElementById('music_bt');
-    if (music.paused){
-        music.play();
-        music_btn.src = 'images/play.png';
-    }
-    else{
-        music.pause();
-        music_btn.src = 'images/pause.png';
-    }
-}
-
-// TODO image loading check
