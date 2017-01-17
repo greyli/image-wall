@@ -3,6 +3,14 @@ import os
 import time
 import hashlib
 
+"""
+    Author: Grey Li
+    Blog: http://greyli.com
+    Email: withlihui@gmail.com
+    Git repository: https://github.com/greyli/image-wall
+    This work based on impress.js which can be found at https://github.com/impress/impress.js
+"""
+
 from flask import Flask, request, render_template, redirect, url_for
 from flask_uploads import UploadSet, configure_uploads, IMAGES,\
     patch_request_class
@@ -11,7 +19,6 @@ from generator import ImageWall
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a random string'
 app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/static/photos'
 
 photos = UploadSet('photos', IMAGES)
@@ -32,7 +39,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/wall/<username>')
+@app.route('/image-wall/<username>')
 def image_wall(username):
     wall = ImageWall(username)
     images = wall.create()

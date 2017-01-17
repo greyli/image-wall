@@ -1,105 +1,112 @@
 <html lang="zh-CN">
 <head>
-    <title>照片墙生成器</title>
+    <title>图片墙生成器</title>
+    <style>
+    body {
+        font-family: Georgia, "Times New Roman",
+         "Microsoft YaHei", STXihei, serif;
+    }
+    #mask-bg {
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 1;
+        -moz-opacity: 0.7;
+        opacity: .70;
+        filter: alpha(opacity=70);
+    }
+    
+    .button {
+        background-color: white;
+        color: black;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        -webkit-transition-duration: 0.4s;  /* Safari */
+        transition-duration: 0.4s;
+    }
+    
+    .green-btn {
+        border: 2px solid #4CAF50; /* Green */
+    }
+    
+    .green-btn:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+    
+    .blue-btn {
+        border: 2px solid #008CBA; /* Blue */
+    }
+    
+    .blue-btn:hover {
+        background-color: #008CBA; /* Blue */
+        color: white;
+    }
+    
+    #green-loader {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #4CAF50;
+        z-index: 2;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+    
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .center-text {
+        text-align: center;
+    }
+    </style>
+
 </head>
 
-<style>
-#mask-bg {
-    display: none;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 1;
-    -moz-opacity: 0.7;
-    opacity: .70;
-    filter: alpha(opacity=70);
-}
- 
-.green-btn {
-    background-color: white;
-    color: black;
-    border: 2px solid #4CAF50; /* Green */
-    padding: 6px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
 
-.green-btn:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
-}
-
-.blue-btn {
-    background-color: white;
-    color: black;
-    border: 2px solid #008CBA; /* Blue */
-    padding: 6px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.blue-btn:hover {
-    background-color: #008CBA; /* Blue */
-    color: white;
-}
-
-#green-loader {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 150px;
-    height: 150px;
-    margin: -75px 0 0 -75px;
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #4CAF50;
-    z-index: 2;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.center-text {
-    text-align: center;
-}
-</style>
 <body>
 
 <div id="green-loader"></div>
 <div id="mask-bg"></div>
 
 <div class="container" style="margin: 10% 30%; padding: 20px;">
-    <div class="center-text">
-        <h1>图片墙生成器</h1>
+    <h1 class="center-text">图片墙生成器</h1>
+        
+    <div style="padding-left: 20%">
         <form id="form_upload" method="POST" enctype="multipart/form-data">
             <input class="button blue-btn" type="file" name="photo" id="photo" multiple="multiple">
             <input class="button green-btn" id="upload" type="submit" value="OK!" onclick="loading()">
         </form>
-    </div>
-    
-    <div style="padding-left: 20%">
         <ul>
             <li>允许的图片数量范围：10~100</li>
             <li>请使用Chrome、Safari、Firefox等现代浏览器</li>
-            <li>Github | 知乎专栏 | Blog</li>
-            <li>By Grey Li</li>
+            <li>
+                <a href="http://greyli.com" target="_blank">Blog</a> |
+                <a href="http://github.com/greyli" target="_blank">Github</a> |
+                <a href="mailto:withlihui@gmail.com">Email</a> |
+                <a href="http://zhuanlan.zhihu.com/flask" target="_blank">知乎专栏</a>
+            </li>
+            <li>By <a href="http://greyli.com" target="_blank">Grey Li</a></li>
         </ul>
     </div>
 </div>

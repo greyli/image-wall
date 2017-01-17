@@ -11,9 +11,10 @@ import os
 
 
 class ImageWall(object):
+    # Generate image's position (x, y, z) and wall's layout (image's amount on column and row).
 
     def __init__(self, username):
-        self.images = []
+        self.positions = []
         self.z = 0
         self.half_row = 0
         self.half_col = 0
@@ -29,7 +30,8 @@ class ImageWall(object):
 
     def create(self):
         images = []
-        # According the sum of images (multiple of 10, 10~100), use different position: {sum: (col, row, z-height)}
+        # According the amount of images (multiple of 10, 10~100),
+        #  use different position: {amount: (col, row, z-height)}
         pos = {0: (2, 5, 5000), 10: (2, 5, 5000), 20: (4, 5, 5000), 30: (5, 6, 5000), 40: (5, 8, 6000), 50: (5, 10, 6000),
                60: (6, 10, 6000), 70: (7, 10, 7000), 80: (8, 10, 7000), 90: (9, 10, 8000), 100: (10, 10, 9000)}
 
@@ -44,11 +46,11 @@ class ImageWall(object):
 
         for x in range(400, 900 * row, 900):
             for y in range(300, 700 * col, 700):
-                self.images.append((self.username + '/' + images.pop(), x, y, self.z))
+                self.positions.append((self.username + '/' + images.pop(), x, y, self.z))
 
         # find the center of the image wall
         self.half_row = 900 * row / 2
         self.half_col = 700 * col / 2
 
-        return self.images
+        return self.positions
 

@@ -3,12 +3,12 @@
 {% block page_content %}
 
 <div class="step" id="overview" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="{{ overview[2] }}"
-     data-scale="1" data-transition-duration="2000">
+     data-scale="1" data-transition-duration="4000">
 </div>
 
-{% for photo in images %}
-<div class="step center-text" data-x="{{ photo[1] }}" data-y="{{ photo[2] }}" data-z="{{ photo[3] }}">
-    <img class="image" src="{{ url_for('static', filename='photos/') }}{{ photo[0] }}">
+{% for image in images %}
+<div class="step center-text" data-x="{{ image[1] }}" data-y="{{ image[2] }}" data-z="{{ image[3] }}">
+    <img class="image" src="{{ url_for('static', filename='photos/') }}{{ image[0] }}">
 </div>
 {% endfor %}
 
