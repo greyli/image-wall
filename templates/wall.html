@@ -1,48 +1,15 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-<div class="step" id="overview" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="10000" data-scale="1" data-transition-duration="2000">
+
+<div class="step" id="overview" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="{{ overview[2] }}"
+     data-scale="1" data-transition-duration="2000">
 </div>
+
 {% for photo in images %}
-
-<div class="step" data-x="{{ photo[1] }}" data-y="{{ photo[2] }}" data-z="{{ photo[3] }}">
-  <div align="center">
-      <img class="image" src="{{ url_for('static', filename='photos/') }}{{ photo[0] }}">
-  </div>
+<div class="step center-text" data-x="{{ photo[1] }}" data-y="{{ photo[2] }}" data-z="{{ photo[3] }}">
+    <img class="image" src="{{ url_for('static', filename='photos/') }}{{ photo[0] }}">
 </div>
-
 {% endfor %}
-
-<div class="step" id="contact" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="0" data-rotate-x="90" data-rotate-z="180">
-      <div class="center-text">
-    <p class="big-text">About</p><hr>
-          <div class="small-text">
-              <p>「一个借助<a href="https://github.com/impress/impress.js" target="_blank">impress.js</a>生成照片墙的程序。详情见这里。」</p><br>
-              <p><a href="http://greyli.com" target="_blank">Blog</a> |
-              <a href="http://github.com/greyli" target="_blank">Github</a> |
-              <a href="mailto:withlihui@gmail.com">Email</a> |
-            <a href="http://zhuanlan.zhihu.com/flask" target="_blank">知乎专栏</a></p>
-          </div>
-          <br>
-        <a class="button back-bt" href="#overview">Back</a>
-        <a class="shake shake-hard button donate-bt" href="#donate">Donate</a>
-</div>
-</div>
-
-
-<div class="step" id="donate" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="-5000" data-rotate-y="90">
-    <div class="center-text">
-        
-    
-          <span class="center-text big-text">Buy me a cup of coffee!</span>
-      <hr>
-      <p class="center-text small-text">
-      <img src="{{ url_for('static', filename='images/qr.png') }}" width="175" height="175"><br>
-      </p>
-    <br>
-      <a class="button back-bt center-text" href="#overview">Back</a>
-        
-        </div>
-</div>
 
 {% endblock %}

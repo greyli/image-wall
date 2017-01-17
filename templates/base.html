@@ -1,94 +1,83 @@
 <html lang="zh-CN">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=1024">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>照片墙</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/impress.css') }}">
-  <style>
-  .image {
-    max-width: 800px;
-    max-height: 600px;
-    cursor: pointer;
-    padding: 1px;
-   border: 10px solid #eee;
-  }
-  
-  .image:hover, #up:hover, #down:hover {
-    outline:2px solid rgba(47, 160, 217, 0.5);
-  }
-  
-#up {
-    display: block;
-    z-index:1005;
-    position: fixed;
-    right: 50%;
-    up: 0;
-}
-
-#down {
-    display: block;
-    z-index:1005;
-    position: fixed;
-    right: 50%;
-    bottom: 0;
-}
-
-  </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>照片墙</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body class="impress-not-supported">
 
-  <!--
-  if user's browser can't supported impress, the message below will be show.
-  -->
-
-  <div class="fallback-message">
+<div class="fallback-message">
     <p>照片墙正在生成中，请耐心等待。但如果等了一分钟还没有跳转（暂不支持手机浏览器），很可能是你的浏览器太落后了，
-    试一下下面这些浏览器吧(ง •̀_•́)ง<b>Chrome</b>, <b>Safari</b> or <b>Firefox</b></p><hr>
+        试一下下面这些浏览器吧(ง •̀_•́)ง<b>Chrome</b>, <b>Safari</b> or <b>Firefox</b></p>
+    <hr>
     <p>The photo wall is being generated, please wait... If the page didn't change after one minute, there must be
-    something wrong about your browser, you better try this browser: <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b>.</p>
-  </div>
+        something wrong about your browser, you better try this browser: <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b>.
+    </p>
+</div>
 
-  <!--
-  <div id="status" style="opacity: 0;">
-    <progress max="100" value="0"></progress>
-  </div>
-  -->
+<div id="blue-loader"></div>
+<div id="mask-bg"></div>
 
-  <div id="loader"></div>
-  <div id="mask-bg"></div>
+<a class="button overview-btn" href="#overview">全景</a>
+<a class="button about-btn" href="#about">关于</a>
+<a class="button close-btn" href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='images/close.png') }}" width="30" height="30">
+</a>
+<input class="button" id="full-screen" type="image" src="{{ url_for('static', filename='images/fullscreen.png') }}"
+       width="25" onclick="toggleFullScreen()">
+<input id="up" type="image" src="{{ url_for('static', filename='images/up.png') }}" width="30" height="30">
+<input id="down" type="image" src="{{ url_for('static', filename='images/down.png') }}" width="30" height="30">
 
-  <div id="mask-show">
-    <div id="tips">图片资源正在加载，请稍候......</div>
-  </div>
-  
-  <a class="button overview-btn" id="" href="#overview">全景</a>
-  <a class="button about-btn" href="#contact">关于</a>
-  <input class="button" id="fullscreen" type="image" src="{{ url_for('static', filename='images/fullscreen.png') }}" width="25" onclick="toggleFullScreen()">
-  <input id="up" type="image" src="{{ url_for('static', filename='images/up.png') }}" width="30" height="30">
-  <input id="down" type="image" src="{{ url_for('static', filename='images/down.png') }}" width="30" height="30">
-  
-  <div id="impress">
-  <div id="image-container">
-      {% block page_content %}{% endblock %}
-  </div>
-  </div>
-   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-   <script src="{{ url_for('static', filename='js/impress.js') }}"></script>
-   <script src="{{ url_for('static', filename='js/imagesloaded.js') }}"></script>
-   <script src="{{ url_for('static', filename='js/photo.js') }}"></script>
-   <script>impress().init();</script>
-    <script>
-    $("#down").click(function () {
-       impress().next();
-    });
-    
-    $("#up").click(function () {
-       impress().prev();
-    });
-    
-    </script>
+<div id="impress">
+    <div id="image-container">
+        {% block page_content %}{% endblock %}
+        <div class="step" id="about" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="20000"
+             data-rotate-x="90"
+             data-rotate-z="180">
+            <div class="center-text">
+                <p class="big-text">About</p>
+                <hr>
+                <div class="small-text">
+                    <p>「这是我的个人项目翻相册（“一个相册网站”）的组成部分，一个使用<a href="https://github.com/impress/impress.js" target="_blank">impress.js</a>生成照片墙的程序。
+                        详情见这里。」</p>
+                    <br>
+                
+                </div>
+                <br>
+                <a class="button back-bt" href="#overview">Back</a>
+                <a class="shake shake-hard button donate-bt" href="#more">More</a>
+            </div>
+        </div>
+        
+        <div class="step" id="more" data-x="{{ overview[0] }}" data-y="{{ overview[1] }}" data-z="20000"
+             data-rotate-y="90">
+            <div class="center-text">
+                
+                <span class="center-text big-text">More</span>
+                <hr>
+                <p class="center-text small-text">
+                    <a href="http://greyli.com" target="_blank">Blog</a> |
+                    <a href="http://github.com/greyli" target="_blank">Github</a> |
+                    <a href="mailto:withlihui@gmail.com">Email</a> |
+                    <a href="http://zhuanlan.zhihu.com/flask" target="_blank">知乎专栏</a>
+                </p>
+                <br>
+                <a class="button back-bt" href="#about">Back</a>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/impress.js') }}"></script>
+<script src="{{ url_for('static', filename='js/imagesloaded.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>impress().init();</script>
+
 </body>
 </html>
