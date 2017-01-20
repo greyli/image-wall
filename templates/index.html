@@ -5,6 +5,17 @@
     body {
         font-family: Georgia, "Times New Roman",
          "Microsoft YaHei", STXihei, serif;
+        background: #eee;
+    }
+    
+    .container {
+        padding: 20px;
+        width: auto !important;
+        max-width: 500px !important;
+        margin: 10% auto auto;
+        background: #fff;
+        border-radius: 10px;
+        
     }
     #mask-bg {
         display: none;
@@ -89,10 +100,10 @@
 <div id="green-loader"></div>
 <div id="mask-bg"></div>
 
-<div class="container" style="margin: 10% 30%; padding: 20px;">
+<div class="container">
     <h1 class="center-text">图片墙生成器</h1>
         
-    <div style="padding-left: 20%">
+    <div style="padding-left: 10%">
         <form id="form_upload" method="POST" enctype="multipart/form-data">
             <input class="button blue-btn" type="file" name="photo" id="photo" multiple="multiple">
             <input class="button green-btn" id="upload" type="submit" value="OK!" onclick="loading()">
