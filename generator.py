@@ -25,13 +25,12 @@ class ImageWall(object):
         x = self.half_row
         y = self.half_col
         z = self.z * 2
-
         return [x, y, z]
 
     def create(self):
         images = []
-        # According the amount of images (multiple of 10, 10~100),
-        #  use different position: {amount: (col, row, z-height)}
+        # according the amount of images (multiple of 10, 10~100),
+        # choose different layout and position: {amount: (col, row, z-height)}
         pos = {0: (2, 5, 5000), 10: (2, 5, 5000), 20: (4, 5, 5000), 30: (5, 6, 5000), 40: (5, 8, 6000), 50: (5, 10, 6000),
                60: (6, 10, 6000), 70: (7, 10, 7000), 80: (8, 10, 7000), 90: (9, 10, 8000), 100: (10, 10, 9000)}
 
