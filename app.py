@@ -28,7 +28,7 @@ patch_request_class(app)  # set maximum file size, default is 16MB
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    username = hashlib.md5('demo' + str(time.time())).hexdigest()[:7]
+    username = hashlib.md5(('demo' + str(time.time())).encode('utf-8')).hexdigest()[:7]
     if request.method == 'POST' and 'photo' in request.files:
         amount = len(request.files.getlist('photo'))
         if amount in range(10, 101):
