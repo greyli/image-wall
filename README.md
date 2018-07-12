@@ -2,7 +2,7 @@
 Image wall generator made with impress.js and Flask.
 
 ## Image Wall Demo
-http://fanxiangce.com/demo1
+http://fanxiangce.com/demo
 
 ## Extensions
 Flask==0.11.1  
